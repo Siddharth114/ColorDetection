@@ -12,32 +12,17 @@ while True:
     cx = int(width / 2)
     cy = int(height / 2)
 
-    # Pick pixel value
     pixel_center = hsv_frame[cy, cx]
     hue_value = pixel_center[0]
 
-    color = "Undefined"
-    if hue_value < 5:
-        color = "RED"
-    elif hue_value < 22:
-        color = "ORANGE"
-    elif hue_value < 33:
-        color = "YELLOW"
-    elif hue_value < 78:
-        color = "GREEN"
-    elif hue_value < 131:
-        color = "BLUE"
-    elif hue_value < 170:
-        color = "VIOLET"
-    else:
-        color = "RED"
-
     pixel_center_bgr = frame[cy, cx]
-    b, g, r = int(pixel_center_bgr[0]), int(pixel_center_bgr[1]), int(pixel_center_bgr[2])
+    b, g, r = int(pixel_center_bgr[0]), int(
+        pixel_center_bgr[1]), int(pixel_center_bgr[2])
 
-    cv2.rectangle(frame, (cx - 220, 10), (cx + 200, 120), (255, 255, 255), -1)
-    cv2.putText(frame, color, (cx - 200, 100), 0, 3, (b, g, r), 5)
-    cv2.circle(frame, (cx, cy), 5, (25, 25, 25), 3)
+    cv2.rectangle(frame, (cx - 520, 10), (cx + 500, 120), (255, 255, 255), -1)
+    cv2.putText(frame, f"R:{r}, G:{g}, B:{b}",
+                (cx - 500, 100), 0, 3, (b, g, r), 5)
+    cv2.circle(frame, (cx, cy), 5, (0, 0, 0), 3)
 
     cv2.imshow("Frame", frame)
     key = cv2.waitKey(1)
