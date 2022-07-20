@@ -24,7 +24,7 @@ while True:
                 (cx - 500, 100), 0, 3, (b, g, r), 5)
     cv2.circle(frame, (cx, cy), 5, (0, 0, 0), 3)
 
-    cv2.imshow("Frame", frame)
+    cv2.imshow("Color Detection", frame)
     key = cv2.waitKey(1)
     if key == 27:
         break
